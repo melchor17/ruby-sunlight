@@ -3,7 +3,7 @@ module Sunlight
   # Houses general methods to work with the Sunlight and Google Maps APIs
   class Base
 
-    API_URL = "http://services.sunlightlabs.com/api/"
+    API_URL = "http://congress.api.sunlightfoundation.com"
     API_FORMAT = "json"
     @@api_key = ''
     
@@ -20,7 +20,7 @@ module Sunlight
       if api_key == nil or api_key == ''
         raise "Failed to provide Sunlight API Key"
       else
-        "#{API_URL}#{api_method}.#{API_FORMAT}?apikey=#{api_key}#{hash2get(params)}"
+        "#{API_URL}/#{api_method}?#{hash2get(params)}apikey=#{api_key}"
       end
     end
 
@@ -30,7 +30,7 @@ module Sunlight
       get_string = ""
 
       h.each_pair do |key, value|
-        get_string += "&#{key.to_s}=#{CGI::escape(value.to_s)}"
+        get_string += "#{key.to_s}=#{CGI::escape(value.to_s)}&"
       end
 
       get_string
