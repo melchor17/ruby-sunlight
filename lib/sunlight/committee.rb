@@ -59,12 +59,12 @@ module Sunlight
     #
     def self.all_for_chamber(chamber)
       
-      url = construct_url("committees.getList", {:chamber=> chamber})
+      url = construct_url("committees", {:chamber=> chamber})
       
       if (result = get_json_data(url))
         committees = []
-        result["response"]["committees"].each do |committee|
-          committees << Committee.new(committee["committee"])
+        result["results"].each do |committee|
+          committees << Committee.new(committee)
         end
       else
         nil # appropriate params not found
