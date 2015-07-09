@@ -34,8 +34,8 @@ module Sunlight
 
        if (result = Sunlight::Base.get_json_data(url))
          committees = []
-         result["response"]["committees"].each do |committee|
-           committees << Sunlight::Committee.new(committee["committee"])
+         result["committees"].each do |committee|
+           committees << Sunlight::Committee.new(committee)
          end
        else
          nil # appropriate params not found
