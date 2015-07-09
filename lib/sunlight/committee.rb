@@ -40,7 +40,6 @@ module Sunlight
     def self.get(id)
 
       url = construct_url("committees.get", {:id => id})
-      
       if (result = get_json_data(url))
         committee = Committee.new(result["response"]["committee"])
       else
