@@ -177,7 +177,7 @@ module Sunlight
     #
     def self.search_by_name(name, threshold='0.8')
       
-      url = construct_url("legislators.search", {:name => name, :threshold => threshold})
+      url = construct_url("legislators", {:name => name, :threshold => threshold})
       
       if (response = get_json_data(url))
         
