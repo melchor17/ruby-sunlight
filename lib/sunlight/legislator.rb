@@ -175,9 +175,9 @@ module Sunlight
     #   legislators = Sunlight::Legislator.search_by_name("Teddy Kennedey")
     #   legislators = Sunlight::Legislator.search_by_name("Johnny Kerry", 0.9)
     #
-    def self.search_by_name(name, threshold='0.8')
+    def self.search_by_name(first_name, last_name , threshold='0.8')
       
-      url = construct_url("legislators", {:name => name, :threshold => threshold})
+      url = construct_url("legislators", {:first_name => first_name, :last_name => last_name, :threshold => threshold})
       
       if (response = get_json_data(url))
         
