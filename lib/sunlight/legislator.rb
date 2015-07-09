@@ -184,13 +184,8 @@ module Sunlight
         legislators = []
         response["results"].each do |result|
           if result
-            legislator = Legislator.new(result["result"]["legislator"])
-            fuzzy_score = result["result"]["score"]
-            
-            if threshold.to_f < fuzzy_score.to_f
-              legislator.fuzzy_score = fuzzy_score.to_f
-              legislators << legislator
-            end
+            legislator = Legislator.new(result)
+            legislators << legislator
           end
         end
         
