@@ -182,7 +182,7 @@ module Sunlight
       if (response = get_json_data(url))
         
         legislators = []
-        response["response"]["results"].each do |result|
+        response["results"].each do |result|
           if result
             legislator = Legislator.new(result["result"]["legislator"])
             fuzzy_score = result["result"]["score"]
